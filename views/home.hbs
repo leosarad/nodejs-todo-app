@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{app.title}}</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+<body>
+    <div class="app-wrapper">
+        <div class="app-title">
+            {{app.title}}
+        </div>
+
+        <div class="app-content">
+            <div class="nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <div class="form">
+                    <form action="/add">
+                        <input type="text" name="note" id="note" placeholder="type your note ...">
+                        <input type="submit" value="Add">
+                    </form>
+                </div>
+            
+                <div class="msg">
+                    {{msg}}
+                </div>
+
+                <div class="notes">
+                    <div class="list">
+                        {{#if notes}}
+                        {{#each notes}}
+                            <div class="item">
+                                <span>{{this.title}}</span>
+                                <span class="action-icons">
+                                    <span class="edit"><a href="/edit?id={{this._id}}"><img src="icons/edit.png" alt="edit"></a></span>
+                                    <span class="edit"><a href="/remove?id={{this._id}}"><img src="icons/bin.png" alt="edit"></a></span>
+                                </span>
+                            </div>
+                        {{/each}}
+                        {{else}}
+                        <div class="no-data">No Notes in database</div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-footer">
+            Project By: theArkein
+        </div>
+    </div>
+</body>
+<script src="js/script.js"></script>
+</html>
