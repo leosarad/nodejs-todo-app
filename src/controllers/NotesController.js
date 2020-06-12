@@ -6,7 +6,6 @@ let app = {
 
 let index = (req,res)=>{
     notes.readAll("msg").then((tasks)=>{
-    // req.flash("mes","Try Again")
         res.render("home",{
             "app":app,
             "notes":tasks,
@@ -27,13 +26,11 @@ let add = (req,res)=>{
 }
 
 let edit = (req,res)=>{
-    let id = req.query.id;
-    notes.edit(id).then((res)=>{
-        console.log("Note Edited:",res);
-        msg = "Note Edited";
+    let note = req.body;
+    notes.edit(note).then((response)=>{
+        res.send(response);
         return true
     })
-    res.redirect('/');
 }
 
 let remove = (req,res)=>{

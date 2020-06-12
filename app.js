@@ -18,7 +18,7 @@ app.set("view engine","hbs");
 
 // Set Path for Satic Files
 app.use(express.static(app.variables.publicDirectoryPath));
-
+app.use(express.json());
 
 // Start Routing
 routes(app)

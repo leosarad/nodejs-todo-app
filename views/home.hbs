@@ -39,14 +39,25 @@
                             <div class="item">
                                 <span>{{this.title}}</span>
                                 <span class="action-icons">
-                                    <span class="edit"><a href="/edit?id={{this._id}}"><img src="icons/edit.png" alt="edit"></a></span>
-                                    <span class="edit"><a href="/remove?id={{this._id}}"><img src="icons/bin.png" alt="edit"></a></span>
+                                    <span class="edit " data-id="{{this._id}}" data-title="{{this.title}}" data-body="{{this.description}}"><a href="#" onclick="edit(this); return false;"><img src="icons/edit.png" alt="edit"></a></span>
+                                    <span class="remove"><a href="/remove?id={{this._id}}"><img src="icons/bin.png" alt="edit"></a></span>
                                 </span>
                             </div>
                         {{/each}}
                         {{else}}
                         <div class="no-data">No Notes in database</div>
                         {{/if}}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note-editor">
+                <div class="wrapper">
+                    <div class="note-title" contenteditable="true">Note Title</div>
+                    <div class="note-description" contenteditable="true">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ex numquam, blanditiis nulla ea culpa minima in iure, atque sint quisquam doloremque itaque eveniet illum consectetur, deserunt necessitatibus voluptate labore.</div>
+                    <div class="buttons">
+                        <input type="button" class="update" value="Save">
+                        <input type="button" class="cancel" value="Cancel">
                     </div>
                 </div>
             </div>

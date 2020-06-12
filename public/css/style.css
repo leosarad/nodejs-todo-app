@@ -103,6 +103,7 @@ input[type="submit"]{
 }
 .action-icons img:hover{
     transform: scale(1.1);
+    cursor: pointer;
 }
 ::-webkit-scrollbar{
     width:5px
@@ -160,4 +161,50 @@ a{
 }
 a:hover{
     text-decoration: underline;
+}
+
+.note-editor{
+    background-color: #1f1e1ebb;
+    height: 100%;
+    width:100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: none;
+}
+.note-editor .wrapper{
+    position: absolute;
+    top:45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 280px;
+    width: 460px;
+    background-color: #181818;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 12px;
+}
+.note-title{
+    font-size: 1.3em;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+.note-description{
+    height: 175px;
+    border: 1px solid#333;
+    padding: 8px;
+}
+.note-editor input[type="button"]{
+    margin-top: 15px;
+    background-color: #333;
+    border-radius: 8px;
+    padding: 4px 20px;
+    border:0px solid #333;
+    color:#ddd;
+    letter-spacing: 0.2em;
+}
+
+.note-editor input[type="button"]:hover{
+    background-color: #252525;
+    cursor: pointer;
 }

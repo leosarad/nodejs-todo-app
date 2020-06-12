@@ -3,9 +3,10 @@ let MongoClient = mongodb.MongoClient;
 let ObjectId = mongodb.ObjectID;
 
 let connectDB = new Promise((resolve,reject)=>{    
-    let dbURL = "mongodb+srv://leosarad100:LetmeIn%23100@cluster0-kqdo1.gcp.mongodb.net/test?retryWrites=true&w=majority";
+    let dbURL = "mongodb+srv://leosarad100:LetmeIn%23100@cluster0-kqdo1.gcp.mongodb.net/todo?retryWrites=true&w=majority";
+    let localURL = "mongodb://127.0.0.1:27017";
     let dbName = "todo";
-    MongoClient.connect(dbURL , {useNewUrlParser:true,useUnifiedTopology:true}, (error,client)=>{
+    MongoClient.connect( localURL, {useNewUrlParser:true,useUnifiedTopology:true}, (error,client)=>{
         if(error){
             return console.log("DB Connection Fail");
         }
@@ -27,7 +28,8 @@ let readAll = ()=>{
 let add = (note)=>{
     return new Promise((resolve,result)=>{
         let item = {
-            "title" : note
+            "title" : note,
+            "description" : "Add note here..."
         }
         connectDB.then((db)=>{
             db.collection('notes').insertOne(item,(error,result)=>{
@@ -47,9 +49,23 @@ let readOne = (id)=>{
 }
 
 
-let edit = (id)=>{
+let edit = (note)=>{
     return new Promise((resolve,reject)=>{
-        console.log("Update object: "+ id);
+        connectDB.then((db)=>{
+            db.collection('notes').updateOne({
+                _id: new ObjectId(note.id)
+               }, {
+                $set: {
+                title: note.title,
+                description: note.description
+                }
+               }).then((result) => {
+                resolve(result)
+               }).catch((error) => {
+                reject(error)
+               })
+               
+        })
     })
 }
 

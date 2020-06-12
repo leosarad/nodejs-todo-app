@@ -9,7 +9,7 @@ module.exports = (app)=>{
 
     app.get("/add", NotesController.add)
 
-    app.get("/edit", NotesController.edit)
+    app.post("/edit", NotesController.edit)
 
     app.get("/remove", NotesController.remove)
 
