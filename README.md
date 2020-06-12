@@ -4,7 +4,7 @@ A simple TODO app in NodeJs.
 
 <h3> Technologies Used </h3>
 <ul>
-  <li><b>Frontend: HTML, CSS<b/></li>
+  <li><b>Frontend: HTML, CSS</b></li>
   <li><b>Backend: Nodejs </b></li>
   <li><b>Database: MongoDB </b></li>
 </ul>
